@@ -1,0 +1,23 @@
+plugins {
+    id 'application'
+}
+
+//version '1.0-SNAPSHOT'
+mainClassName = 'PA1'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.apache.lucene', name: 'lucene-core', version: '7.6.0'
+}
+
+jar {
+    // add dependencies in jar
+    from configurations.compile.collect { zipTree it }
+    // specify main file in manifest
+    manifest.attributes "Main-Class": "PA1"
+}
